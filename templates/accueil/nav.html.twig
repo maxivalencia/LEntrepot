@@ -1,13 +1,13 @@
 <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto active" href="#hero">Accueil</a></li>
+          {# <li><a class="nav-link scrollto active" href="#hero">Accueil</a></li> #}
           <!-- <li><a class="nav-link scrollto" href="#about">A propos de nous</a></li> -->
           {% for menu in menus %}
             <li class="dropdown"><a href="#"><span>{{ menu.type }}</span> <i class="bi bi-chevron-down"></i></a>
               <ul>
                 {% for rubrique in rubriques %}
                   {% if rubrique.typeprojet == menu.type %}
-                    <li><a href="#">{{ rubrique.nom }}</a></li>
+                    <li><a href="{{ path('enpublication', {'id': rubrique.id}) }}">{{ rubrique.nom }}</a></li>
                   {% endif %}                 
                 {% endfor %}
               </ul>

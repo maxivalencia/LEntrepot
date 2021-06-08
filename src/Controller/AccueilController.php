@@ -8,6 +8,9 @@ use App\Repository\TypeprojetRepository;
 use App\Entity\Rubrique;
 use App\Form\RubriqueType;
 use App\Repository\RubriqueRepository;
+use App\Entity\Publication;
+use App\Form\PublicationType;
+use App\Repository\PublicationRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -24,6 +27,36 @@ class AccueilController extends AbstractController
         $rubriques = $rubriqueRepository->findAll();
         return $this->render('accueil/index.html.twig', [
             'controller_name' => 'Accueil',
+            'menus' => $menus,
+            'rubriques' => $rubriques,
+        ]);
+    }
+
+    /**
+     * @Route("/accueil/test", name="accueil2", methods={"GET","POST"})
+     */
+    public function accueil(Request $request, PublicationRepository $publicationRepository, TypeprojetRepository $typeprojetRepository, RubriqueRepository $rubriqueRepository): Response
+    {
+        $menus = $typeprojetRepository->findAll();
+        $rubriques = $rubriqueRepository->findAll();
+        return $this->render('accueil/offre.html.twig', [
+            'controller_name' => 'Accueil',
+            'menus' => $menus,
+            'rubriques' => $rubriques,
+        ]);
+    }
+
+    /**
+     * @Route("/{id}/enpublication", name="enpublication")
+     */
+    public function enpublication(PublicationRepository $publicationRepository, TypeprojetRepository $typeprojetRepository, RubriqueRepository $rubriqueRepository): Response
+    {
+        $menus = $typeprojetRepository->findAll();
+        $rubriques = $rubriqueRepository->findAll();
+        //$publication = $publicationRepository->findBy(['rubrique' => $id]);
+        return $this->render('accueil/index.html.twig', [
+            'controller_name' => 'Publication',
+            //'publication' => $publication,
             'menus' => $menus,
             'rubriques' => $rubriques,
         ]);
