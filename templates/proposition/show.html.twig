@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Proposition{% endblock %}
+
+{% block body %}
+    <h1>Proposition</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ proposition.id }}</td>
+            </tr>
+            <tr>
+                <th>Proposition</th>
+                <td>{{ proposition.proposition }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ proposition.date ? proposition.date|date('Y-m-d') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('proposition_index') }}">back to list</a>
+
+    <a href="{{ path('proposition_edit', {'id': proposition.id}) }}">edit</a>
+
+    {{ include('proposition/_delete_form.html.twig') }}
+{% endblock %}

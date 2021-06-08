@@ -2,15 +2,15 @@
 
 namespace App\Entity;
 
-use App\Repository\RubriqueRepository;
+use App\Repository\TypepropositionRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=RubriqueRepository::class)
+ * @ORM\Entity(repositoryClass=TypepropositionRepository::class)
  */
-class Rubrique
+class Typeproposition
 {
     /**
      * @ORM\Id
@@ -22,16 +22,10 @@ class Rubrique
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $nom;
+    private $type;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Typeprojet::class, inversedBy="rubriques")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $typeprojet;
-
-    /**
-     * @ORM\OneToMany(targetEntity=Publication::class, mappedBy="rubrique")
+     * @ORM\OneToMany(targetEntity=Publication::class, mappedBy="type")
      */
     private $publications;
 
@@ -45,37 +39,16 @@ class Rubrique
         return $this->id;
     }
 
-    public function getNom(): ?string
+    public function getType(): ?string
     {
-        return $this->nom;
+        return $this->type;
     }
 
-    public function setNom(string $nom): self
+    public function setType(string $type): self
     {
-        $this->nom = $nom;
+        $this->type = $type;
 
         return $this;
-    }
-
-    public function getTypeprojet(): ?typeprojet
-    {
-        return $this->typeprojet;
-    }
-
-    public function setTypeprojet(?typeprojet $typeprojet): self
-    {
-        $this->typeprojet = $typeprojet;
-
-        return $this;
-    }
-
-    /**
-    * toString
-    * @return string
-    */
-    public function __toString()
-    {
-        return $this->getNom();
     }
 
     /**
@@ -90,7 +63,7 @@ class Rubrique
     {
         if (!$this->publications->contains($publication)) {
             $this->publications[] = $publication;
-            $publication->setRubrique($this);
+            $publication->setType($this);
         }
 
         return $this;
@@ -100,8 +73,8 @@ class Rubrique
     {
         if ($this->publications->removeElement($publication)) {
             // set the owning side to null (unless already changed)
-            if ($publication->getRubrique() === $this) {
-                $publication->setRubrique(null);
+            if ($publication->getType() === $this) {
+                $publication->setType(null);
             }
         }
 

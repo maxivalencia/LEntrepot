@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Typeproposition{% endblock %}
+
+{% block body %}
+    <h1>Create new Typeproposition</h1>
+
+    {{ include('typeproposition/_form.html.twig') }}
+
+    <a href="{{ path('typeproposition_index') }}">back to list</a>
+{% endblock %}
