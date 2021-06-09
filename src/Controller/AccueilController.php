@@ -47,18 +47,20 @@ class AccueilController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/enpublication", name="enpublication")
+     * @Route("/{id}", name="enpublication")
      */
-    public function enpublication(PublicationRepository $publicationRepository, TypeprojetRepository $typeprojetRepository, RubriqueRepository $rubriqueRepository): Response
+    public function enpublication(int $id ,Request $request, PublicationRepository $publicationRepository, TypeprojetRepository $typeprojetRepository, RubriqueRepository $rubriqueRepository): Response
     {
         $menus = $typeprojetRepository->findAll();
         $rubriques = $rubriqueRepository->findAll();
-        //$publication = $publicationRepository->findBy(['rubrique' => $id]);
-        return $this->render('accueil/index.html.twig', [
+        $titre_rubrique = $rubriqueRepository->findOneBy(['id' => $id]);
+        $publication = $publicationRepository->findBy(['rubrique' => $id]);
+        return $this->render('accueil/offre.html.twig', [
             'controller_name' => 'Publication',
-            //'publication' => $publication,
+            'publication' => $publication,
             'menus' => $menus,
             'rubriques' => $rubriques,
+            'titre_rubrique' => $titre_rubrique,
         ]);
     }
 }
