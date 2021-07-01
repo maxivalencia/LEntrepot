@@ -379,7 +379,7 @@
         "version": "v5.2.8"
     },
     "symfony/proxy-manager-bridge": {
-        "version": "v5.2.9"
+        "version": "v5.2.10"
     },
     "symfony/routing": {
         "version": "5.1",
@@ -408,19 +408,19 @@
         ]
     },
     "symfony/security-core": {
-        "version": "v5.2.9"
+        "version": "v5.2.10"
     },
     "symfony/security-csrf": {
-        "version": "v5.2.7"
+        "version": "v5.2.10"
     },
     "symfony/security-guard": {
-        "version": "v5.2.8"
+        "version": "v5.2.10"
     },
     "symfony/security-http": {
-        "version": "v5.2.9"
+        "version": "v5.2.10"
     },
     "symfony/serializer": {
-        "version": "v5.2.9"
+        "version": "v5.2.10"
     },
     "symfony/serializer-pack": {
         "version": "v1.0.4"
@@ -429,10 +429,10 @@
         "version": "v2.4.0"
     },
     "symfony/stopwatch": {
-        "version": "v5.2.7"
+        "version": "v5.2.10"
     },
     "symfony/string": {
-        "version": "v5.2.8"
+        "version": "v5.2.10"
     },
     "symfony/test-pack": {
         "version": "v1.0.7"
@@ -454,7 +454,7 @@
         "version": "v2.4.0"
     },
     "symfony/twig-bridge": {
-        "version": "v5.2.8"
+        "version": "v5.2.10"
     },
     "symfony/twig-bundle": {
         "version": "5.0",
@@ -487,13 +487,13 @@
         ]
     },
     "symfony/var-dumper": {
-        "version": "v5.2.8"
+        "version": "v5.2.10"
     },
     "symfony/var-exporter": {
-        "version": "v5.2.8"
+        "version": "v5.2.10"
     },
     "symfony/web-link": {
-        "version": "v5.2.5"
+        "version": "v5.2.10"
     },
     "symfony/web-profiler-bundle": {
         "version": "3.3",
@@ -532,7 +532,7 @@
         ]
     },
     "symfony/yaml": {
-        "version": "v5.2.9"
+        "version": "v5.2.10"
     },
     "twig/extra-bundle": {
         "version": "v3.3.1"

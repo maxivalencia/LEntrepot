@@ -1,0 +1,25 @@
+{% extends 'base2.html.twig' %}
+
+{% block title %}{{ controller_name }}{% endblock %}
+
+        {% block header %}
+            {% include 'accueil/header.html.twig' %}
+        {% endblock %}
+{% block body %}
+  <br>
+  <br>
+  <br>
+  <br>
+  <div><h2>{{ titre_rubrique }}</h2></div>
+
+  <br>
+  <div class="boxrubrique">
+    <div class="contenuerubrique">exemple de texte</div>
+  </div>
+  {% for publication in publications %}  
+    <div class="boxrubrique">
+      <div class="contenuerubrique">{{ publication.publication }}</div>
+    </div>
+    <hr>
+  {% endfor %}
+{% endblock %}

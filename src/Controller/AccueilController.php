@@ -39,7 +39,7 @@ class AccueilController extends AbstractController
     {
         $menus = $typeprojetRepository->findAll();
         $rubriques = $rubriqueRepository->findAll();
-        return $this->render('accueil/offre.html.twig', [
+        return $this->render('accueil/index.html.twig', [
             'controller_name' => 'Accueil',
             'menus' => $menus,
             'rubriques' => $rubriques,
@@ -47,7 +47,7 @@ class AccueilController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="enpublication")
+     * @Route("/enpublication/{id}", name="enpublication", methods={"GET","POST"})
      */
     public function enpublication(int $id ,Request $request, PublicationRepository $publicationRepository, TypeprojetRepository $typeprojetRepository, RubriqueRepository $rubriqueRepository): Response
     {

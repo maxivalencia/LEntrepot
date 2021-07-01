@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        
+        <title>L'Entrepot - {% block title %}accueil{% endblock %}</title>
+        
+        <meta content="entrepot" name="description">
+        <meta content="entrepot" name="keywords">
+        
+        <!-- Favicons -->
+        <link href="theme/img/favicon.png" rel="icon">
+        <link href="theme/img/apple-touch-icon.png" rel="apple-touch-icon">
+        
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+        <!-- Vendor CSS Files -->
+        <link href="theme/vendor/aos/aos.css" rel="stylesheet">
+        <link href="theme/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="theme/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+        <link href="theme/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+        <link href="theme/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+        <link href="theme/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+        <link href="vendor/aos/aos.css" rel="stylesheet">
+        <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+        <link href="vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+        <link href="vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+        <link href="vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+        <!-- Template Main CSS File -->
+        <link href="theme/css/style.css" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet">
+        <link href="css/style2.css" rel="stylesheet">
+        {# Run `composer require symfony/webpack-encore-bundle`
+           and uncomment the following Encore helpers to start using Symfony UX #}
+        {% block stylesheets %}
+            {#{{ encore_entry_link_tags('app') }}#}
+        {% endblock %}
+    </head>
+    <body> <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top {# header-transparent #}">
+    <div style="text-align:right;text-color:#2e6e8b;"><span><a href="#" class="btn-get-started scrollto">Se connecter</a></span>&nbsp;&nbsp;&nbsp;<span style="padding-right:100px;;"><a href="#" class="btn-get-started scrollto">S'inscrire</a></span></div>
+    <div class="container d-flex align-items-center justify-content-between">
+      <div class="logo">        
+        <h1 class="text-light"><a href="{{ path('accueil') }}"><span>L'Entrepot</span></a></h1>
+        <!-- Uncomment below if you prefer to use an image logo -->
+        {# <a href="{{ path('accueil') }}"><img src="assets/img/logo.png" alt="" class="img-fluid"></a> #}
+      </div><br>
+        <nav id="navbar" class="navbar">
+            <ul>
+                {# <li><a class="nav-link scrollto active" href="#hero">Accueil</a></li> #}
+                <!-- <li><a class="nav-link scrollto" href="#about">A propos de nous</a></li> -->
+                {% for menu in menus %}
+                <li class="dropdown"><a href="#"><span>{{ menu.type }}</span> <i class="bi bi-chevron-down"></i></a>
+                    <ul>
+                    {% for rubrique in rubriques %}
+                        {% if rubrique.typeprojet == menu.type %}
+                        <li><a href="{{ path('offre', {'id': rubrique.id}) }}">{{ rubrique.nom }}</a></li>
+                        {% endif %}                 
+                    {% endfor %}
+                    </ul>
+                </li>
+                {% endfor %}
+            </ul>
+            </nav><!-- .navbar -->
+      
+    </div>
+  </header><!-- End Header -->
+        {% block body %}{% endblock %}
+  <footer id="footer" class="footer"> 
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>L'Entrepot</span></strong>. Tous droits reservés
+      </div>
+      <div class="credits">
+        Designed by <a href="mailto:husaynmozart@gmail.com">Husayn Mozart</a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+                
+        <!-- Vendor JS Files -->
+        <script src="theme/vendor/aos/aos.js"></script>
+        <script src="theme/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="theme/vendor/glightbox/js/glightbox.min.js"></script>
+        <script src="theme/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+        <script src="theme/vendor/php-email-form/validate.js"></script>
+        <script src="theme/vendor/purecounter/purecounter.js"></script>
+        <script src="theme/vendor/swiper/swiper-bundle.min.js"></script>
+        <script src="vendor/aos/aos.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="vendor/glightbox/js/glightbox.min.js"></script>
+        <script src="vendor/isotope-layout/isotope.pkgd.min.js"></script>
+        <script src="vendor/php-email-form/validate.js"></script>
+        <script src="vendor/purecounter/purecounter.js"></script>
+        <script src="vendor/swiper/swiper-bundle.min.js"></script>
+
+        <!-- Template Main JS File -->
+        <script src="theme/js/main.js"></script>
+        <script src="js/main.js"></script>
+
+        {% block javascripts %}
+            {#{{ encore_entry_script_tags('app') }}#}
+        {% endblock %}
+    </body>
+</html>
