@@ -1,0 +1,88 @@
+{% extends 'base3.html.twig' %}
+
+{% block title %}Acceuil{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row kl-bgc-entete">
+        <div class="col-3 col-md-3 col-lg-3 col-xl-3 text-center">
+            <img src="/dist/images/logo_dgsr.png" class="img-fluid" width="100px" heigth="100px" alt="Image en-tête de la DGSR">
+        </div>
+        <div class="col-9 col-md-9 col-lg-9 col-xl-9">
+            <div class="font-weight-normal justify-content-center align-items-center text-center kl-mise-en-forme-entete">Direction Général de la sécurité routière</div>
+            <div class="text-right"><a href="{{ path('app_logout') }}" type="button" class="btn btn-light"> <i class="fas fa-sign-out-alt"></i> </a></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-3 col-md-3 col-lg-3 col-xl-3">
+            <div class="vertical-menu">
+                {# path de suivies ici #}
+                <a href="#" class="active"><span class="fa fa-calendar-alt"></span> Tableau de bord : {{ app.user.username }}</a>
+                <a href="{{ path('commentaire_index') }}"><span class="fa fa-user-edit"></span> Commentaire </a>
+                <a href="{{ path('proposition_index') }}"><span class="fa fa-user-times"></span> Proposition </a>
+                <a href="{{ path('publication_index') }}"><span class="fa fa-users-cog"></span> Publication </a>
+                <a href="{{ path('user_index') }}"><span class="fa fa-user-clock"></span> {# En attente #} Utilisateur </a>
+                <a href="{{ path('message_index') }}"><span class="fa fa-user-check"></span> Message </a>
+                {# <a href="{{ path('sous_unite') }}"><span class="fa fa-user-friends"></span> Sous-Unité </a>
+                <a href="#"> Statistique </a> #}
+                {# {% if is_granted('ROLE_ADMIN') %}
+                    <a href="{{ path('dossiers_index') }}"><span class="fa fa-history"></span> Historique </a>
+                    <a href="{{ path('user_index') }}"><span class="fa fa-user"></span> Utilisateur </a>
+                    <a href="{{ path('unites_index') }}"><span class="fa fa-users"></span> Unité </a>
+                    <a href="{{ path('type_dossiers_index') }}"><span class="fa fa-file"></span> Type de dossiers </a>
+                    <a href="{{ path('resultats_index') }}"><span class="fa fa-book-medical"></span> Resultat </a>
+                    <a href="{{ path('traitements_index') }}"><span class="fa fa-book"></span> Traitement </a>
+                    <!--a href="#"> Role </a-->
+                    <a href="{{ path('communes_index') }}"><span class="fa fa-chart-area"></span> Commune </a>                       
+                    <a href="{{ path('districts_index') }}"><span class="fa fa-chart-area"></span> District </a>                         
+                    <a href="{{ path('regions_index') }}"><span class="fa fa-chart-area"></span> Region </a>                        
+                    <a href="{{ path('provinces_index') }}"><span class="fa fa-chart-area"></span> Province </a>
+                {% endif %} #}
+                <!--<a href="{#{{ path('app_logout') }}#}"><span class="fa fa-sign-out"></span> Déconnexion</a>-->
+            </div>
+        </div>
+        <div class="col-9 col-md-9 col-lg-9 col-xl-9">
+            <div class="row">
+                {% block contenue %}
+                    <div class="container">
+                        <div class="text-center">
+                            <h1>Tableau de Bord</h1>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-4 col-md-4 col-lg-4 col-xl-4 text-center" style="background-color: hsl(14, 100%, 53%);">
+                                <strong><span class="fa fa-user-times"></span><br> nombre de dossier non recue <br> ({{ non_recue }})</strong>
+                            </div>
+                            <div class="col-4 col-md-4 col-lg-4 col-xl-4 offset-md-2 offset-2 offset-lg-2 offset-xl-2 text-center" style="background-color:red;">
+                                <strong><span class="fa fa-users-cog"></span><br> nombre de dossier en cours de traitement <br> ({{ en_cours }})</strong>
+                            </div>
+                        </div>
+                        <br><br>
+                        <div class="row">
+                            <div class="col-4 col-md-4 col-lg-4 col-xl-4 text-center" style="background-color: rgba(50, 115, 220);">
+                                <strong><span class="fa fa-user-clock"></span><br> nombre de dossier transferer <br>({{ en_attente }})</strong>
+                            </div>
+                            <div class="col-4 col-md-4 col-lg-4 col-xl-4 offset-md-2 offset-2 offset-lg-2 text-center" style="background-color: #05ffb0;">
+                                <strong><span class="fa fa-user-check"></span><br> nombre de dossier terminer <br>({{ terminer }})</strong>
+                            </div>
+                        </div>
+                        <br><br>
+                        {# <div class="row">
+                            <div class="col-4 col-md-4 col-lg-4 col-xl-4 text-center" style="background-color: rgb(50, 115, 220);">
+                                <strong>nombre d'unité sous tutelle <br>{{ sous_unite }}</strong>
+                            </div>
+                        </div> #}            
+                    </div>
+                {% endblock %}</div>
+        </div>
+    </div>
+    <hr>
+    <div class="row justify-content-center align-items-center text-center">
+        <span style="font-size:10px;">ANDRIANTSOA Husayn Mozart (DGSR/SIT)</span>
+    </div>
+    <div class="row justify-content-center align-items-center text-center">
+        <span style="font-size:10px;">Copyright © 2019 DGSR.</span>
+    </div>
+</div>
+<input name="notif_non" id="notif_non" type="hidden" value='{{ path('notif_non') }}'>
+{% endblock %}
