@@ -63,4 +63,14 @@ class AccueilController extends AbstractController
             'titre_rubrique' => $titre_rubrique,
         ]);
     }
+
+    /**
+     * @Route("/admin/", name="admin", methods={"GET","POST"})
+     */
+    public function admin(): Response
+    {
+        return $this->render('accueil/admin.html.twig', [
+            'controller_name' => 'Publication',
+        ]);
+    }
 }

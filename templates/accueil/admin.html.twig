@@ -1,8 +1,8 @@
-{% extends 'base3.html.twig' %}
+{% extends 'base4.html.twig' %}
 
 {% block title %}Acceuil{% endblock %}
 
-{% block body %}
+{% block content %}
 <div class="container">
     <div class="row kl-bgc-entete">
         <div class="col-3 col-md-3 col-lg-3 col-xl-3 text-center">
@@ -17,7 +17,7 @@
         <div class="col-3 col-md-3 col-lg-3 col-xl-3">
             <div class="vertical-menu">
                 {# path de suivies ici #}
-                <a href="#" class="active"><span class="fa fa-calendar-alt"></span> Tableau de bord : {{ app.user.username }}</a>
+                <a href="#" class="active"><span class="fa fa-calendar-alt"></span> Tableau de bord : {# {{ app.user.username }} #}</a>
                 <a href="{{ path('commentaire_index') }}"><span class="fa fa-user-edit"></span> Commentaire </a>
                 <a href="{{ path('proposition_index') }}"><span class="fa fa-user-times"></span> Proposition </a>
                 <a href="{{ path('publication_index') }}"><span class="fa fa-users-cog"></span> Publication </a>
@@ -44,7 +44,7 @@
         <div class="col-9 col-md-9 col-lg-9 col-xl-9">
             <div class="row">
                 {% block contenue %}
-                    <div class="container">
+                    {# <div class="container">
                         <div class="text-center">
                             <h1>Tableau de Bord</h1>
                         </div>
@@ -72,7 +72,7 @@
                                 <strong>nombre d'unité sous tutelle <br>{{ sous_unite }}</strong>
                             </div>
                         </div> #}            
-                    </div>
+                    {# </div> #}
                 {% endblock %}</div>
         </div>
     </div>
@@ -84,5 +84,5 @@
         <span style="font-size:10px;">Copyright © 2019 DGSR.</span>
     </div>
 </div>
-<input name="notif_non" id="notif_non" type="hidden" value='{{ path('notif_non') }}'>
+{# <input name="notif_non" id="notif_non" type="hidden" value='{{ path('notif_non') }}'> #}
 {% endblock %}
