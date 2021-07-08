@@ -21,17 +21,17 @@
                 <td>{{ proposition.proposition }}</td>
                 <td>{{ proposition.date ? proposition.date|date('Y-m-d') : '' }}</td>
                 <td>
-                    <a href="{{ path('proposition_show', {'id': proposition.id}) }}">show</a>
+                    <a href="{{ path('proposition_show', {'id': proposition.id}) }}">voir</a>
                     <a href="{{ path('proposition_edit', {'id': proposition.id}) }}">edit</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="4">no records found</td>
+                <td colspan="4">Aucun enregistrement trouver</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('proposition_new') }}">Create new</a>
+    <a href="{{ path('proposition_new') }}">Nouveau</a>
 {% endblock %}

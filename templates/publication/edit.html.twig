@@ -5,9 +5,9 @@
 {% block contenue %}
     <h1>Modification Publication</h1>
 
-    {{ include('publication/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('publication/_form.html.twig', {'button_label': 'Modifier'}) }}
 
-    <a href="{{ path('publication_index') }}">back to list</a>
+    <a href="{{ path('publication_index') }}">Retour</a>
 
     {{ include('publication/_delete_form.html.twig') }}
 {% endblock %}

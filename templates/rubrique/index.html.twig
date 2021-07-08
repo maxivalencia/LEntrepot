@@ -19,17 +19,17 @@
                 <td>{{ rubrique.id }}</td>
                 <td>{{ rubrique.nom }}</td>
                 <td>
-                    <a href="{{ path('rubrique_show', {'id': rubrique.id}) }}">show</a>
+                    <a href="{{ path('rubrique_show', {'id': rubrique.id}) }}">voir</a>
                     <a href="{{ path('rubrique_edit', {'id': rubrique.id}) }}">edit</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="3">no records found</td>
+                <td colspan="3">Aucun enregistrement trouver</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('rubrique_new') }}">Create new</a>
+    <a href="{{ path('rubrique_new') }}">Nouveau</a>
 {% endblock %}

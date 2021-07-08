@@ -19,17 +19,17 @@
                 <td>{{ typeprojet.id }}</td>
                 <td>{{ typeprojet.type }}</td>
                 <td>
-                    <a href="{{ path('typeprojet_show', {'id': typeprojet.id}) }}">show</a>
+                    <a href="{{ path('typeprojet_show', {'id': typeprojet.id}) }}">voir</a>
                     <a href="{{ path('typeprojet_edit', {'id': typeprojet.id}) }}">edit</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="3">no records found</td>
+                <td colspan="3">Aucun enregistrement trouver</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('typeprojet_new') }}">Create new</a>
+    <a href="{{ path('typeprojet_new') }}">Nouveau</a>
 {% endblock %}
