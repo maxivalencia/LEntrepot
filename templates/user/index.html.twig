@@ -49,5 +49,9 @@
         </tbody>
     </table>
 
+    <div class="navigation">
+        {{ knp_pagination_render(users) }}
+    </div>
+
     <a href="{{ path('user_new') }}">Nouveau</a>
 {% endblock %}

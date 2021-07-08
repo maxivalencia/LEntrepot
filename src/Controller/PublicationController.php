@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Knp\Component\Pager\PaginatorInterface;
 
 /**
  * @Route("/publication")
@@ -18,10 +19,15 @@ class PublicationController extends AbstractController
     /**
      * @Route("/", name="publication_index", methods={"GET"})
      */
-    public function index(PublicationRepository $publicationRepository): Response
+    public function index(PublicationRepository $publicationRepository, Request $request, PaginatorInterface $paginator): Response
     {
+        $pagination = $paginator->paginate(
+            $publicationRepository->findBy([], ["id" => "DESC"]), /* query NOT result */
+            $request->query->getInt('page', 1)/*page number*/,
+            20/*limit per page*/
+        );
         return $this->render('publication/index.html.twig', [
-            'publications' => $publicationRepository->findAll(),
+            'publications' => $pagination,
         ]);
     }
 

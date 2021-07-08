@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Knp\Component\Pager\PaginatorInterface;
 
 /**
  * @Route("/typeprojet")
@@ -18,10 +19,15 @@ class TypeprojetController extends AbstractController
     /**
      * @Route("/", name="typeprojet_index", methods={"GET"})
      */
-    public function index(TypeprojetRepository $typeprojetRepository): Response
+    public function index(TypeprojetRepository $typeprojetRepository, Request $request, PaginatorInterface $paginator): Response
     {
+        $pagination = $paginator->paginate(
+            $typeprojetRepository->findBy([], ["id" => "DESC"]), /* query NOT result */
+            $request->query->getInt('page', 1)/*page number*/,
+            20/*limit per page*/
+        );
         return $this->render('typeprojet/index.html.twig', [
-            'typeprojets' => $typeprojetRepository->findAll(),
+            'typeprojets' => $pagination,
         ]);
     }
 

@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Knp\Component\Pager\PaginatorInterface;
 
 /**
  * @Route("/proposition")
@@ -18,10 +19,15 @@ class PropositionController extends AbstractController
     /**
      * @Route("/", name="proposition_index", methods={"GET"})
      */
-    public function index(PropositionRepository $propositionRepository): Response
+    public function index(PropositionRepository $propositionRepository, Request $request, PaginatorInterface $paginator): Response
     {
+        $pagination = $paginator->paginate(
+            $propositionRepository->findBy([], ["id" => "DESC"]), /* query NOT result */
+            $request->query->getInt('page', 1)/*page number*/,
+            20/*limit per page*/
+        );
         return $this->render('proposition/index.html.twig', [
-            'propositions' => $propositionRepository->findAll(),
+            'propositions' => $pagination,
         ]);
     }
 

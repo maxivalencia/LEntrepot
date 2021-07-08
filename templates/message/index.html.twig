@@ -35,5 +35,9 @@
         </tbody>
     </table>
 
+    <div class="navigation">
+        {{ knp_pagination_render(messages) }}
+    </div>
+
     <a href="{{ path('message_new') }}">Nouveau</a>
 {% endblock %}
