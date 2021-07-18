@@ -32,6 +32,11 @@ class Proposition
      */
     private $date;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="propositions")
+     */
+    private $user;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -69,6 +74,27 @@ class Proposition
     public function setDate(\DateTimeInterface $date): self
     {
         $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+    * toString
+    * @return string
+    */
+    public function __toString()
+    {
+        return $this->getProposition();
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }

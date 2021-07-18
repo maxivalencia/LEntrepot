@@ -4,16 +4,28 @@
     padding: 20px;
     margin: 20px;
     background-color: rgb(28, 177, 214);
-    align-self: center;
+    /* align-self: center;
     align-content: center;
-    align-items: center;
+    align-items: center; */
 }
 
 .titrerubrique {
-    text-align: center;
+    text-align: left;
     font-weight: bold;
+    font-size: 14;
 }
 
 .contenuerubrique {
     text-align: left;
+}
+
+.lirelasuite {
+    text-align: right;
+    font-weight: bold;
+}
+
+.formulaireproposition {
+    padding: 50px;
+    margin: 50px;
+    text-align: center;
 }

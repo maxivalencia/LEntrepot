@@ -1,0 +1,46 @@
+{% extends 'base2.html.twig' %}
+
+{% block title %}{{ controller_name }}{% endblock %}
+
+        {% block header %}
+            {% include 'accueil/header.html.twig' %}
+        {% endblock %}
+{% block body %}
+  <br>
+  <br>
+  <br>
+  <br>
+  <div><h2>{{ titre_rubrique }}</h2></div>
+
+  <br>
+  <div class="boxrubrique">
+    <div class="titrerubrique"><u>{{ publication.user.username }}</u> : </div><br>
+    <div class="contenuerubrique">{{ publication.publication }}</div>
+  </div>
+  <br><hr><br>
+  <h3>Les propositions reçue :</h3>
+  <br>
+  {% for proposition in propositions %}  
+    <div class="boxrubrique">
+      <div class="titrerubrique"><u>{{ proposition.user.username }}</u> : </div><br>
+      <div class="contenuerubrique">{{ proposition.proposition }}</div><br>
+      {# <div class="lirelasuite"><a href="#">lire la suite ...</a></div> #}
+    </div>
+    <hr>
+  {% endfor %}
+
+  <div class="navigation">
+      {{ knp_pagination_render(propositions) }}
+  </div>
+  <br><hr><br>
+  <h3>Votre Proposition :</h3>
+  <br>
+  <div class="formulaireproposition">
+    <form method="post" action="{{ path('propose') }}">
+        <input type="hidden" class="text-center" name="publication" id="publication" value="{{ publication.id }}" required>
+        <TEXTAREA name="proposition" id="proposition" rows=10 cols=100></TEXTAREA>
+        <div class="text-center"><button type="submit">Proposer</button></div>
+    </form>
+  <div>
+  <br>
+{% endblock %}

@@ -13,13 +13,19 @@
   <div><h2>{{ titre_rubrique }}</h2></div>
 
   <br>
-  <div class="boxrubrique">
+  {# <div class="boxrubrique">
     <div class="contenuerubrique">exemple de texte</div>
-  </div>
+  </div> #}
   {% for publication in publications %}  
     <div class="boxrubrique">
-      <div class="contenuerubrique">{{ publication.publication }}</div>
+      <div class="titrerubrique"><u>{{ publication.user.username }}</u> : </div><br>
+      <div class="contenuerubrique">{{ publication.publication|u.truncate(250) }} ...</div><br>
+      <div class="lirelasuite"><a href="{{ path('details', {'id': publication.id}) }}">lire la suite ...</a></div>
     </div>
     <hr>
   {% endfor %}
+
+  <div class="navigation">
+      {{ knp_pagination_render(publications) }}
+  </div>
 {% endblock %}

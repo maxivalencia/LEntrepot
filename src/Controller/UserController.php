@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Knp\Component\Pager\PaginatorInterface;
 
 /**
@@ -16,6 +17,13 @@ use Knp\Component\Pager\PaginatorInterface;
  */
 class UserController extends AbstractController
 {
+    private $passwordEncoder;
+
+    public function __construct(UserPasswordEncoderInterface $passwordEncoder)
+    {
+        $this->passwordEncoder = $passwordEncoder;
+    }
+
     /**
      * @Route("/", name="user_index", methods={"GET"})
      */
@@ -42,6 +50,11 @@ class UserController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+            $user->setRoles(['ROLE_CLIENT']);
+            $user->setPassword($this->passwordEncoder->encodePassword(
+                $user,
+                $user->getPassword()
+            ));
             $entityManager->persist($user);
             $entityManager->flush();
 
@@ -73,7 +86,15 @@ class UserController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+            //$this->getDoctrine()->getManager()->flush();
+            $entityManager = $this->getDoctrine()->getManager();
+            $user->setRoles(['ROLE_CLIENT']);
+            $user->setPassword($this->passwordEncoder->encodePassword(
+                $user,
+                $user->getPassword()
+            ));
+            $entityManager->persist($user);
+            $entityManager->flush();
 
             return $this->redirectToRoute('user_index');
         }

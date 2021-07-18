@@ -86,11 +86,17 @@ class User implements UserInterface
      */
     private $messages;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Proposition::class, mappedBy="user")
+     */
+    private $propositions;
+
     public function __construct()
     {
         $this->publications = new ArrayCollection();
         $this->commentaires = new ArrayCollection();
         $this->messages = new ArrayCollection();
+        $this->propositions = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -337,6 +343,36 @@ class User implements UserInterface
             // set the owning side to null (unless already changed)
             if ($message->getExpeditaire() === $this) {
                 $message->setExpeditaire(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Proposition[]
+     */
+    public function getPropositions(): Collection
+    {
+        return $this->propositions;
+    }
+
+    public function addProposition(Proposition $proposition): self
+    {
+        if (!$this->propositions->contains($proposition)) {
+            $this->propositions[] = $proposition;
+            $proposition->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProposition(Proposition $proposition): self
+    {
+        if ($this->propositions->removeElement($proposition)) {
+            // set the owning side to null (unless already changed)
+            if ($proposition->getUser() === $this) {
+                $proposition->setUser(null);
             }
         }
 
