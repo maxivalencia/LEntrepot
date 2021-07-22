@@ -1,4 +1,11 @@
 security:
+    role_hierarchy:
+        ROLE_CLIENT : ROLE_USER
+        #ROLE_SOCIETE : ROLE_USER
+        #ROLE_MODERATEUR : [ROLE_CIVIL, ROLE_SOCIETE]
+        ROLE_ADMIN : ROLE_CLIENT
+        ROLE_SUPER_ADMIN : [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+
     encoders:
         App\Entity\User:
             algorithm: auto

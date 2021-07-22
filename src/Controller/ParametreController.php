@@ -19,7 +19,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
-class InscriptionController extends AbstractController
+class ParametreController extends AbstractController
 {
     private $passwordEncoder;
 
@@ -29,21 +29,20 @@ class InscriptionController extends AbstractController
     }
 
     /**
-     * @Route("/inscription", name="inscription")
+     * @Route("/parametre", name="parametre")
      */
     public function index(int $id=1 ,Request $request, PublicationRepository $publicationRepository, TypeprojetRepository $typeprojetRepository, RubriqueRepository $rubriqueRepository): Response
     {
         $id = $request->query->get('id');
         $menus = $typeprojetRepository->findAll();
         $rubriques = $rubriqueRepository->findAll();
-        //$titre_rubrique = $rubriqueRepository->findOneBy(['id' => $id]);
-        //$publication = $publicationRepository->findBy(['rubrique' => $id]);
-        
         $user = new User();
+        $user = $this->getUser();
         $form = $this->createForm(InscriptionType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            //$this->getDoctrine()->getManager()->flush();
             $entityManager = $this->getDoctrine()->getManager();
             $user->setRoles(['ROLE_CLIENT']);
             $user->setPassword($this->passwordEncoder->encodePassword(
@@ -53,10 +52,11 @@ class InscriptionController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_login');
+            return $this->redirectToRoute('user_index');
         }
-        return $this->render('inscription/index.html.twig', [
-            'controller_name' => 'Inscription',
+
+        return $this->render('parametre/index.html.twig', [
+            'controller_name' => 'Parametre',
             //'publications' => $publication,
             'menus' => $menus,
             'rubriques' => $rubriques,

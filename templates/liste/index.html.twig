@@ -1,0 +1,29 @@
+{% extends 'base2.html.twig' %}
+
+{% block title %}{{ controller_name }}{% endblock %}
+
+        {% block header %}
+            {% include 'accueil/header.html.twig' %}
+        {% endblock %}
+
+{% block body %}
+  <br>
+  <br>
+  <br>
+  <br>
+  <div><h2>Liste des offres</h2></div>
+
+  <br>
+  {% for liste in listes %}  
+    <div class="boxrubrique">
+      <div class="titrerubrique"><u>{{ liste.user.username }}</u> : </div><br>
+      <div class="contenuerubrique">{{ liste.publication|u.truncate(250) }} ...</div><br>
+      <div class="lirelasuite"><a href="{{ path('details', {'id': liste.id}) }}">lire la suite ...</a></div>
+    </div>
+    <hr>
+  {% endfor %}
+
+  <div class="navigation">
+      {{ knp_pagination_render(listes) }}
+  </div>
+{% endblock %}

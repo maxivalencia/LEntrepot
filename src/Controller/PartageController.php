@@ -11,56 +11,41 @@ use App\Repository\RubriqueRepository;
 use App\Entity\Publication;
 use App\Form\PublicationType;
 use App\Repository\PublicationRepository;
-use App\Form\InscriptionType;
+use App\Form\PartageType;
 use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
-class InscriptionController extends AbstractController
+class PartageController extends AbstractController
 {
-    private $passwordEncoder;
-
-    public function __construct(UserPasswordEncoderInterface $passwordEncoder)
-    {
-        $this->passwordEncoder = $passwordEncoder;
-    }
-
     /**
-     * @Route("/inscription", name="inscription")
+     * @Route("/partage", name="partage")
      */
     public function index(int $id=1 ,Request $request, PublicationRepository $publicationRepository, TypeprojetRepository $typeprojetRepository, RubriqueRepository $rubriqueRepository): Response
     {
-        $id = $request->query->get('id');
+        $user = $this->getUser();
         $menus = $typeprojetRepository->findAll();
         $rubriques = $rubriqueRepository->findAll();
-        //$titre_rubrique = $rubriqueRepository->findOneBy(['id' => $id]);
-        //$publication = $publicationRepository->findBy(['rubrique' => $id]);
-        
-        $user = new User();
-        $form = $this->createForm(InscriptionType::class, $user);
+        $publication = new Publication();
+        $form = $this->createForm(PartageType::class, $publication);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
-            $user->setRoles(['ROLE_CLIENT']);
-            $user->setPassword($this->passwordEncoder->encodePassword(
-                $user,
-                $user->getPassword()
-            ));
-            $entityManager->persist($user);
+            $publication->setUser($user);
+            $publication->setDate(new \DateTime());
+            $entityManager->persist($publication);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_login');
+            return $this->redirectToRoute('liste');
         }
-        return $this->render('inscription/index.html.twig', [
-            'controller_name' => 'Inscription',
+        return $this->render('partage/index.html.twig', [
+            'controller_name' => 'Publication',
             //'publications' => $publication,
             'menus' => $menus,
             'rubriques' => $rubriques,
-            //'titre_rubrique' => $titre_rubrique,
             'form' => $form->createView(),
         ]);
     }
