@@ -11,6 +11,9 @@ use App\Repository\RubriqueRepository;
 use App\Entity\Publication;
 use App\Form\PublicationType;
 use App\Repository\PublicationRepository;
+use App\Entity\Partenaire;
+use App\Form\PartenaireType;
+use App\Repository\PartenaireRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -21,14 +24,25 @@ class AccueilController extends AbstractController
     /**
      * @Route("/", name="accueil")
      */
-    public function index(TypeprojetRepository $typeprojetRepository, RubriqueRepository $rubriqueRepository): Response
+    public function index(TypeprojetRepository $typeprojetRepository, RubriqueRepository $rubriqueRepository, PartenaireRepository $partenaireRepository): Response
     {
         $menus = $typeprojetRepository->findAll();
         $rubriques = $rubriqueRepository->findAll();
+        $partenaires = $partenaireRepository->findBy([],["id" => "DESC"]);
+        $i = 0;
+        $liste_partenaires = [];
+        foreach ($partenaires as $partenaire) {
+            if ($i < 5) {
+                // exit;
+                $liste_partenaires[$i] = $partenaire;
+                $i++;
+            }
+        }
         return $this->render('accueil/index.html.twig', [
             'controller_name' => 'Accueil',
             'menus' => $menus,
             'rubriques' => $rubriques,
+            'partenaires' => $liste_partenaires,
         ]);
     }
 

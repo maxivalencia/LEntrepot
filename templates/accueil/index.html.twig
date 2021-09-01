@@ -6,17 +6,25 @@
   <!-- ======= Hero Section ======= -->
   <div>
     <br><br><br>
-    {# <section id="services" class="services"> #}
-      {# <div class="container"> #}
+    <section id="services" class="services">
+      <div class="container">
 
-        {# <div class="section-title" data-aos="fade-in" data-aos-delay="100">
+        <div class="section-title" data-aos="fade-in" data-aos-delay="100">
           <h2>Services</h2>
           <p>L'entrepôt, spécialiste de la rénovation energetique, ou, des structures neuves en acier, vous propose, des installations à partir de 200 m2, afin, d'y investir, d'y travailler, d'y exposer, d’y sous louer, voir d'y habiter. Entrepôt, show-room, bâtiments industriels, bureaux, salle de sport, et activité professionnelles diverses et variés font partie de nos compétences.
 			<br>Nous garantissons le juste prix, la reactivité, des équipes dédiées et un investissement durable sur toute la France.Nous pouvons aussi vous proposer du foncier sur toute la france. </p>
-        </div> #}
-{# 
+        </div>
         <div class="row">
-          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+          {% for partenaire in partenaires %}            
+            <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+              <div class="icon-box" data-aos="fade-up">
+                {# <div class="icon"><i class="bx bxl-dribbble"></i></div> #}
+                <h4 class="title"><a href="">{{ partenaire.nom }}</a></h4>
+                <p class="description"><img src="/logo/{{ partenaire.logo }}" alt="logo {{ partenaire.nom }}" width="150px"></p>
+              </div>
+            </div>
+          {% endfor %}
+          {# <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
             <div class="icon-box" data-aos="fade-up">
               <div class="icon"><i class="bx bxl-dribbble"></i></div>
               <h4 class="title"><a href="">Lorem Ipsum</a></h4>
@@ -46,12 +54,12 @@
               <h4 class="title"><a href="">Nemo Enim</a></h4>
               <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
             </div>
-          </div>
+          </div> #}
 
         </div>
 
-      </div> #}
-    {# </section><!-- End Services Section --> #}
+      </div>
+    </section><!-- End Services Section -->
   </div>
   <section id="hero" class="hero">
     <div class="hero-container" data-aos="fade-up">

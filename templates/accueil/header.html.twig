@@ -1,13 +1,13 @@
  <!-- ======= Header ======= -->
-  <header id="header" class="header fixed-top {# header-transparent #}">
+  <header id="header" class="header fixed-top {# header-transparent #}">    
     {% if is_granted("ROLE_CLIENT") %}
-      <div style="text-align:right;text-color:#2e6e8b;"><span><a href="{{ path('partage') }}" class="btn-get-started scrollto">Créer Offre</a></span>&nbsp;&nbsp;&nbsp;<span><a href="{{ path('liste') }}" class="btn-get-started scrollto">Mes Offre</a></span>&nbsp;&nbsp;&nbsp;<span><a href="{{ path('parametre') }}" class="btn-get-started scrollto">Paramètre</a></span>&nbsp;&nbsp;&nbsp;<span style="padding-right:100px;;"><a href="{{ path('app_logout') }}" class="btn-get-started scrollto">Deconnecter</a></span></div>
+      <div style="text-align:right;text-color:#2e6e8b;">{% if is_granted("ROLE_ADMIN") %}<span style="padding-right:100px;;"><a href="{{ path('admin') }}" class="btn-get-started scrollto">Administration</a></span>{% endif %}<span><a href="{{ path('partage') }}" class="btn-get-started scrollto">Créer Offre</a></span>&nbsp;&nbsp;&nbsp;<span><a href="{{ path('liste') }}" class="btn-get-started scrollto">Mes Offre</a></span>&nbsp;&nbsp;&nbsp;<span><a href="{{ path('parametre') }}" class="btn-get-started scrollto">Paramètre</a></span>&nbsp;&nbsp;&nbsp;<span style="padding-right:100px;;"><a href="{{ path('app_logout') }}" class="btn-get-started scrollto">Deconnecter</a></span></div>
     {% else %}
       <div style="text-align:right;text-color:#2e6e8b;"><span><a href="{{ path('app_login') }}" class="btn-get-started scrollto">Se connecter</a></span>&nbsp;&nbsp;&nbsp;<span style="padding-right:100px;;"><a href="{{ path('inscription') }}" class="btn-get-started scrollto">S'inscrire</a></span></div>
     {% endif %}
     <div class="container d-flex align-items-center justify-content-between">
       <div class="logo">        
-        <h1 class="text-light"><a href="{{ path('accueil') }}"><span>L'Entrepot</span></a></h1>
+        <h1 class="text-light"><a href="{{ path('accueil') }}"><span>{# L'Entrepot #}<img src="/dist/images/logo2.png" alt="LEntrepot" width="200px"></span></a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
         {# <a href="{{ path('accueil') }}"><img src="assets/img/logo.png" alt="" class="img-fluid"></a> #}
       </div><br>

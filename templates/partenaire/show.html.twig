@@ -2,7 +2,7 @@
 
 {% block title %}Information Partenaire{% endblock %}
 
-{% block body %}
+{% block contenue %}
     <h1>Information Partenaire</h1>
 
     <table class="table">
@@ -17,7 +17,8 @@
             </tr>
             <tr>
                 <th>Logo</th>
-                <td>{{ partenaire.logo }}</td>
+                <td><img src="/logo/{{ partenaire.logo }}" alt="logo {{ partenaire.nom }}" width="300px"></td>
+                {# <td>{{ partenaire.logo }}</td> #}
             </tr>
         </tbody>
     </table>
