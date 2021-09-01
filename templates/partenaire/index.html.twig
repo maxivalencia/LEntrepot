@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'base4.html.twig' %}
 
 {% block title %}Partenaire index{% endblock %}
 
@@ -21,17 +21,21 @@
                 <td>{{ partenaire.nom }}</td>
                 <td>{{ partenaire.logo }}</td>
                 <td>
-                    <a href="{{ path('partenaire_show', {'id': partenaire.id}) }}">show</a>
+                    <a href="{{ path('partenaire_show', {'id': partenaire.id}) }}">voir</a>
                     <a href="{{ path('partenaire_edit', {'id': partenaire.id}) }}">edit</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="4">no records found</td>
+                <td colspan="4">Aucun enregistrement trouver</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
+
+    <div class="navigation">
+        {{ knp_pagination_render(partenaires) }}
+    </div>
 
     <a href="{{ path('partenaire_new') }}">Create new</a>
 {% endblock %}
