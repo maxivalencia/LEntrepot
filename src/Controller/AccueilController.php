@@ -32,7 +32,7 @@ class AccueilController extends AbstractController
         $i = 0;
         $liste_partenaires = [];
         foreach ($partenaires as $partenaire) {
-            if ($i < 5) {
+            if ($i < 4) {
                 // exit;
                 $liste_partenaires[$i] = $partenaire;
                 $i++;
