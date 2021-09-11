@@ -49,6 +49,11 @@ class Publication
      */
     private $user;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $image;
+
     public function __construct()
     {
         $this->propositions = new ArrayCollection();
@@ -156,5 +161,17 @@ class Publication
     public function __toString()
     {
         return $this->getPublication();
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(string $image): self
+    {
+        $this->image = $image;
+
+        return $this;
     }
 }

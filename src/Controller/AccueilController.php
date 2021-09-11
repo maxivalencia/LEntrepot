@@ -14,17 +14,21 @@ use App\Repository\PublicationRepository;
 use App\Entity\Partenaire;
 use App\Form\PartenaireType;
 use App\Repository\PartenaireRepository;
+use App\Entity\TexteAccueil;
+use App\Form\TexteAccueilType;
+use App\Repository\TexteAccueilRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Validator\Constraints\File;
 
 class AccueilController extends AbstractController
 {
     /**
      * @Route("/", name="accueil")
      */
-    public function index(TypeprojetRepository $typeprojetRepository, RubriqueRepository $rubriqueRepository, PartenaireRepository $partenaireRepository): Response
+    public function index(TypeprojetRepository $typeprojetRepository, TexteAccueilRepository $texteAccueilRepository, RubriqueRepository $rubriqueRepository, PartenaireRepository $partenaireRepository): Response
     {
         $menus = $typeprojetRepository->findAll();
         $rubriques = $rubriqueRepository->findAll();
@@ -43,13 +47,14 @@ class AccueilController extends AbstractController
             'menus' => $menus,
             'rubriques' => $rubriques,
             'partenaires' => $liste_partenaires,
+            'texte_accueil' => $texteAccueilRepository->findOneBy(['id' => 1]),
         ]);
     }
 
     /**
      * @Route("/accueil/test", name="accueil2", methods={"GET","POST"})
      */
-    public function accueil(Request $request, PublicationRepository $publicationRepository, TypeprojetRepository $typeprojetRepository, RubriqueRepository $rubriqueRepository): Response
+    public function accueil(Request $request, TexteAccueilRepository $texteAccueilRepository, PublicationRepository $publicationRepository, TypeprojetRepository $typeprojetRepository, RubriqueRepository $rubriqueRepository): Response
     {
         $menus = $typeprojetRepository->findAll();
         $rubriques = $rubriqueRepository->findAll();
@@ -57,6 +62,7 @@ class AccueilController extends AbstractController
             'controller_name' => 'Accueil',
             'menus' => $menus,
             'rubriques' => $rubriques,
+            'texte_accueil' => $texteAccueilRepository->findOneBy(['id' => 1]),
         ]);
     }
 

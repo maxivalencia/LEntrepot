@@ -1,0 +1,26 @@
+{% extends 'base4.html.twig' %}
+
+{% block title %}Texte Accueil{% endblock %}
+
+{% block contenue %}
+    <h1>Texte Accueil</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ texte_accueil.id }}</td>
+            </tr>
+            <tr>
+                <th>Texte</th>
+                <td>{{ texte_accueil.texte }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('texte_accueil_index') }}">Retour</a>
+
+    <a href="{{ path('texte_accueil_edit', {'id': texte_accueil.id}) }}">Modifier</a>
+
+    {# {{ include('texte_accueil/_delete_form.html.twig') }} #}
+{% endblock %}

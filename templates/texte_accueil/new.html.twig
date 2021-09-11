@@ -1,0 +1,11 @@
+{% extends 'base4.html.twig' %}
+
+{% block title %}Nouveau Texte Accueil{% endblock %}
+
+{% block contenue %}
+    <h1>Nouveau Texte Accueil</h1>
+
+    {{ include('texte_accueil/_form.html.twig') }}
+
+    <a href="{{ path('texte_accueil_index') }}">Retour</a>
+{% endblock %}

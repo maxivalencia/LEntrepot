@@ -14,14 +14,21 @@
   <div><h2>Liste des offres</h2></div>
 
   <br>
-  {% for liste in listes %}  
-    <div class="boxrubrique">
-      <div class="titrerubrique"><u>{{ liste.user.username }}</u> : </div><br>
-      <div class="contenuerubrique">{{ liste.publication|u.truncate(250) }} ...</div><br>
-      <div class="lirelasuite"><a href="{{ path('details', {'id': liste.id}) }}">lire la suite ...</a></div>
+  <div class="container">
+    <div class="row">
+      {% for liste in listes %}   
+        <div class="col-3">
+          <div class="boxrubrique">
+            {# <div class="titrerubrique"><u>{{ liste.user.username }}</u> : </div><br> #}
+            <div><img src="/image/{{ liste.image }}" alt="image" width="200px"></div>
+            <div class="contenuerubrique">{{ liste.publication|u.truncate(50) }} ...</div><br>
+            <div class="lirelasuite"><a href="{{ path('details', {'id': liste.id}) }}">lire la suite ...</a></div>
+          </div>
+          <hr>
+        </div>
+      {% endfor %}
     </div>
-    <hr>
-  {% endfor %}
+  </div>
 
   <div class="navigation">
       {{ knp_pagination_render(listes) }}

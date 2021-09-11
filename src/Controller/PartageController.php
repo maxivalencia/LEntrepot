@@ -33,6 +33,17 @@ class PartageController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $image = $form['photo']->getData();
+            if($image){
+                $originalFilename = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME);
+                $safeFilename = transliterator_transliterate('Any-Latin; Latin-ASCII; [^A-Za-z0-9_] remove; Lower()', $originalFilename);
+                $newFilename = $safeFilename.'-'.uniqid().'.'.$image->guessExtension();
+                $image->move(
+                    $this->getParameter('image'),
+                    $newFilename
+                );
+                $publication->setImage($newFilename);
+            }
             $entityManager = $this->getDoctrine()->getManager();
             $publication->setUser($user);
             $publication->setDate(new \DateTime());

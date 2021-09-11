@@ -1,0 +1,35 @@
+{% extends 'base4.html.twig' %}
+
+{% block title %}Texte Accueil{% endblock %}
+
+{% block contenue %}
+    <h1>Texte Accueil</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                {# <th>Id</th> #}
+                <th>Texte</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for texte_accueil in texte_accueils %}
+            <tr>
+                {# <td>{{ texte_accueil.id }}</td> #}
+                <td>{{ texte_accueil.texte }}</td>
+                <td>
+                    <a href="{{ path('texte_accueil_show', {'id': texte_accueil.id}) }}">voir</a>
+                    <a href="{{ path('texte_accueil_edit', {'id': texte_accueil.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {# <a href="{{ path('texte_accueil_new') }}">Nouveau</a> #}
+{% endblock %}

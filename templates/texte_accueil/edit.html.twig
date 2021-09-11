@@ -1,0 +1,13 @@
+{% extends 'base4.html.twig' %}
+
+{% block title %}Modification Texte Accueil{% endblock %}
+
+{% block contenue %}
+    <h1>Modification Texte Accueil</h1>
+
+    {{ include('texte_accueil/_form.html.twig', {'button_label': 'Modifier'}) }}
+
+    <a href="{{ path('texte_accueil_index') }}">Retour</a>
+
+    {# {{ include('texte_accueil/_delete_form.html.twig') }} #}
+{% endblock %}

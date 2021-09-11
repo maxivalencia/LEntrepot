@@ -52,4 +52,5 @@ security:
         - { path: ^/rubrique, roles: ROLE_ADMIN }
         - { path: ^/proposition, roles: ROLE_ADMIN }
         - { path: ^/commentaire, roles: ROLE_ADMIN }
+        - { path: ^/texte/accueil, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
