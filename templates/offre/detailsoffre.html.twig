@@ -16,7 +16,7 @@
   <div class="boxrubrique">
     <div class="titrerubrique"><u>{{ publication.user.username }}</u> : </div><br>
     <div><img src="/image/{{ publication.image }}" alt="image"></div>
-    <div class="contenuerubrique">{{ publication.publication }}</div>
+    <div class="contenuerubrique">{{ publication.publication|nl2br }}</div>
   </div>
   <br><hr><br>
   <h3>Les propositions reçue :</h3>
@@ -24,7 +24,7 @@
   {% for proposition in propositions %}  
     <div class="boxrubrique">
       <div class="titrerubrique"><u>{{ proposition.user.username }}</u> : </div><br>
-      <div class="contenuerubrique">{{ proposition.proposition }}</div><br>
+      <div class="contenuerubrique">{{ proposition.proposition|nl2br }}</div><br>
       {# <div class="lirelasuite"><a href="#">lire la suite ...</a></div> #}
     </div>
     <hr>

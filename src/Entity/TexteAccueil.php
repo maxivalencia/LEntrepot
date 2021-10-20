@@ -29,6 +29,8 @@ class TexteAccueil
 
     public function getTexte(): ?string
     {
+        //$texterec = str_replace("\n", "<br>",$this->texte);
+        //return $texterec;
         return $this->texte;
     }
 

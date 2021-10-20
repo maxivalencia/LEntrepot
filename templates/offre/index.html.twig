@@ -23,7 +23,7 @@
           <div class="boxrubrique col-sm">
             {# <div class="titrerubrique"><u>{{ publication.user.username }}</u> : </div><br> #}
             <div><img src="/image/{{ publication.image }}" alt="image" width="200px" height="200px"></div>
-            <div class="contenuerubrique">{{ publication.publication|u.truncate(200) }} ...</div><br>
+            <div class="contenuerubrique">{{ publication.publication|u.truncate(200)|nl2br }} ...</div><br>
             <div class="lirelasuite"><a href="{{ path('details', {'id': publication.id}) }}">lire la suite ...</a></div>
           </div>
           <hr>
