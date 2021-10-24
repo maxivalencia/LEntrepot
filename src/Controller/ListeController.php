@@ -21,7 +21,8 @@ class ListeController extends AbstractController
     {
         $user = $this->getUser();
         $menus = $typeprojetRepository->findAll();
-        $rubriques = $rubriqueRepository->findAll();
+        //$rubriques = $rubriqueRepository->findAll();
+        $rubriques = $rubriqueRepository->findBy([],["nom" => "ASC"]);
         $listes = $paginator->paginate(
             $publicationRepository->findBy(['user' => $user]), /* query NOT result */
             $request->query->getInt('page', 1)/*page number*/,

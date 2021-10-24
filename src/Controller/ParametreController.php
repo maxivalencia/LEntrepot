@@ -35,7 +35,8 @@ class ParametreController extends AbstractController
     {
         $id = $request->query->get('id');
         $menus = $typeprojetRepository->findAll();
-        $rubriques = $rubriqueRepository->findAll();
+        //$rubriques = $rubriqueRepository->findAll();
+        $rubriques = $rubriqueRepository->findBy([],["nom" => "ASC"]);
         $user = new User();
         $user = $this->getUser();
         $form = $this->createForm(InscriptionType::class, $user);

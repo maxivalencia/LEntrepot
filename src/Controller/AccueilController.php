@@ -31,7 +31,8 @@ class AccueilController extends AbstractController
     public function index(TypeprojetRepository $typeprojetRepository, TexteAccueilRepository $texteAccueilRepository, RubriqueRepository $rubriqueRepository, PartenaireRepository $partenaireRepository): Response
     {
         $menus = $typeprojetRepository->findAll();
-        $rubriques = $rubriqueRepository->findAll();
+        //$rubriques = $rubriqueRepository->findAll();
+        $rubriques = $rubriqueRepository->findBy([],["nom" => "ASC"]);
         $partenaires = $partenaireRepository->findBy([],["id" => "DESC"]);
         $i = 0;
         $liste_partenaires = [];
@@ -57,7 +58,8 @@ class AccueilController extends AbstractController
     public function accueil(Request $request, TexteAccueilRepository $texteAccueilRepository, PublicationRepository $publicationRepository, TypeprojetRepository $typeprojetRepository, RubriqueRepository $rubriqueRepository): Response
     {
         $menus = $typeprojetRepository->findAll();
-        $rubriques = $rubriqueRepository->findAll();
+        //$rubriques = $rubriqueRepository->findAll();
+        $rubriques = $rubriqueRepository->findBy([],["nom" => "ASC"]);
         return $this->render('accueil/index.html.twig', [
             'controller_name' => 'Accueil',
             'menus' => $menus,
@@ -72,7 +74,8 @@ class AccueilController extends AbstractController
     public function enpublication(int $id ,Request $request, PublicationRepository $publicationRepository, TypeprojetRepository $typeprojetRepository, RubriqueRepository $rubriqueRepository): Response
     {
         $menus = $typeprojetRepository->findAll();
-        $rubriques = $rubriqueRepository->findAll();
+        //$rubriques = $rubriqueRepository->findAll();
+        $rubriques = $rubriqueRepository->findBy([],["nom" => "ASC"]);
         $titre_rubrique = $rubriqueRepository->findOneBy(['id' => $id]);
         $publication = $publicationRepository->findBy(['rubrique' => $id]);
         return $this->render('accueil/offre.html.twig', [

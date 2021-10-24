@@ -31,7 +31,8 @@ class OffreController extends AbstractController
     {
         $id = $request->query->get('id');
         $menus = $typeprojetRepository->findAll();
-        $rubriques = $rubriqueRepository->findAll();
+        //$rubriques = $rubriqueRepository->findAll();
+        $rubriques = $rubriqueRepository->findBy([],["nom" => "ASC"]);
         $titre_rubrique = $rubriqueRepository->findOneBy(['id' => $id]);
         //$publication = $publicationRepository->findBy(['rubrique' => $id]);
         $publication = $paginator->paginate(
@@ -57,7 +58,8 @@ class OffreController extends AbstractController
         $id = $request->query->get('id');
         $publication = $publicationRepository->findOneBy(['id' => $id]);
         $menus = $typeprojetRepository->findAll();
-        $rubriques = $rubriqueRepository->findAll();
+        //$rubriques = $rubriqueRepository->findAll();
+        $rubriques = $rubriqueRepository->findBy([],["nom" => "ASC"]);
         $titre_rubrique = $publication->getRubrique();
         $proposition = $paginator->paginate(
             $propositionRepository->findBy(['publication' => $publication]), /* query NOT result */

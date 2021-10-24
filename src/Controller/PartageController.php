@@ -27,7 +27,8 @@ class PartageController extends AbstractController
     {
         $user = $this->getUser();
         $menus = $typeprojetRepository->findAll();
-        $rubriques = $rubriqueRepository->findAll();
+        //$rubriques = $rubriqueRepository->findAll();
+        $rubriques = $rubriqueRepository->findBy([],["nom" => "ASC"]);
         $publication = new Publication();
         $form = $this->createForm(PartageType::class, $publication);
         $form->handleRequest($request);

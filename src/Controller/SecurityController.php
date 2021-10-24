@@ -35,7 +35,8 @@ class SecurityController extends AbstractController
 
         $id = $request->query->get('id');
         $menus = $typeprojetRepository->findAll();
-        $rubriques = $rubriqueRepository->findAll();
+        //$rubriques = $rubriqueRepository->findAll();
+        $rubriques = $rubriqueRepository->findBy([],["nom" => "ASC"]);
         //$titre_rubrique = $rubriqueRepository->findOneBy(['id' => $id]);
         //$publication = $publicationRepository->findBy(['rubrique' => $id]);
         return $this->render('security/login.html.twig', [
