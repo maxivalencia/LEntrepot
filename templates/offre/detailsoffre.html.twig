@@ -13,7 +13,8 @@
   <div><h2>{{ titre_rubrique }}</h2></div>
 
   <br>
-  <div class="boxrubrique">
+  {# <div class="boxrubrique"> #}
+  <div class="boxrubrique" style="background-color:#ffffff;">
     <div class="titrerubrique"><u>{{ publication.user.username }}</u> : </div><br>
     <div><img src="/image/{{ publication.image }}" alt="image"></div>
     <div class="contenuerubrique">{{ publication.publication|nl2br }}</div>
