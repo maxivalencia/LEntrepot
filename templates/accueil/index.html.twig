@@ -34,15 +34,22 @@
 			<br>Nous garantissons le juste prix, la reactivité, des équipes dédiées et un investissement durable sur toute la France.Nous pouvons aussi vous proposer du foncier sur toute la france. </p> #}
         </div>
         <div class="row">
-          {% for partenaire in partenaires %}            
-            <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-              <div class="icon-box" data-aos="fade-up">
-                {# <div class="icon"><i class="bx bxl-dribbble"></i></div> #}
-                <h4 class="title"><a href="">{{ partenaire.nom }}</a></h4>
-                {# <p class="description"><img src="/logo/{{ partenaire.logo }}" alt="logo {{ partenaire.nom }}" width="150px"></p> #}
+          <div class="swiper-wrapper">
+            {% for partenaire in partenaires %}     
+              <div class="swiper-slide" style="width:250px;">  
+                <div class="testimonial-item">     
+                  {# <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0"> #}
+                    <div class="icon-box" data-aos="fade-up">
+                      {# <div class="icon"><i class="bx bxl-dribbble"></i></div> #}
+                      <h4 class="title"><a href="">{{ partenaire.nom }}</a></h4>
+                      {# <p class="description"><img src="/logo/{{ partenaire.logo }}" alt="logo {{ partenaire.nom }}" width="150px"></p> #}
+                    </div>
+                  {# </div> #}
+                </div>
               </div>
-            </div>
-          {% endfor %}
+            {% endfor %}
+          </div>
+          <div class="swiper-pagination"></div>
           {# <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
             <div class="icon-box" data-aos="fade-up">
               <div class="icon"><i class="bx bxl-dribbble"></i></div>

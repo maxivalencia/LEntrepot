@@ -47,7 +47,8 @@ class AccueilController extends AbstractController
             'controller_name' => 'Accueil',
             'menus' => $menus,
             'rubriques' => $rubriques,
-            'partenaires' => $liste_partenaires,
+            //'partenaires' => $liste_partenaires,
+            'partenaires' => $partenaires,
             'texte_accueil' => $texteAccueilRepository->findOneBy(['id' => 1]),
         ]);
     }
