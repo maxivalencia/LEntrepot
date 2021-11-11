@@ -16,7 +16,11 @@
   {# <div class="boxrubrique"> #}
   <div class="boxrubrique" style="background-color:#ffffff;">
     <div class="titrerubrique"><u>{{ publication.user.username }}</u> : </div><br>
-    <div><img src="/image/{{ publication.image }}" alt="image"></div>
+    <div>{# <img src="/image/{{ publication.image }}" alt="image"> #}
+      {% for image in images %}
+        <img src="/image_publication/{{ image.nomServer }}" alt="image de la publication" width="500px">
+      {% endfor %}
+    </div>
     <div class="contenuerubrique">{{ publication.publication|nl2br }}</div>
   </div>
   <br><hr><br>

@@ -1,4 +1,8 @@
 {{ form_start(form) }}
     {{ form_widget(form) }}
+    <input name="upload_file" id="upload_file" type="hidden" value="{{ path('upload_file', {'ref': refimage}) }}">
+    <input name="fileref" id="fileref" type="hidden" value="{{ refimage }}">
     <button class="btn">{{ button_label|default('Enregistrer') }}</button>
 {{ form_end(form) }}
+
+<div id="fileuploader" class="btn">Upload</div>

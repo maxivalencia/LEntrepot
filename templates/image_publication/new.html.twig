@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New ImagePublication{% endblock %}
+
+{% block body %}
+    <h1>Create new ImagePublication</h1>
+
+    {{ include('image_publication/_form.html.twig') }}
+
+    <a href="{{ path('image_publication_index') }}">back to list</a>
+{% endblock %}

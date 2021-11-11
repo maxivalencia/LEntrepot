@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ImagePublication index{% endblock %}
+
+{% block body %}
+    <h1>ImagePublication index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>NomFichier</th>
+                <th>NomServer</th>
+                <th>ReferenceImage</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for image_publication in image_publications %}
+            <tr>
+                <td>{{ image_publication.id }}</td>
+                <td>{{ image_publication.nomFichier }}</td>
+                <td>{{ image_publication.nomServer }}</td>
+                <td>{{ image_publication.referenceImage }}</td>
+                <td>
+                    <a href="{{ path('image_publication_show', {'id': image_publication.id}) }}">show</a>
+                    <a href="{{ path('image_publication_edit', {'id': image_publication.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('image_publication_new') }}">Create new</a>
+{% endblock %}

@@ -13,6 +13,7 @@ use App\Form\PublicationType;
 use App\Entity\Proposition;
 use App\Repository\PropositionRepository;
 use App\Repository\PublicationRepository;
+use App\Repository\ImagePublicationRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -27,12 +28,12 @@ class OffreController extends AbstractController
     /**
      * @Route("/", name="offre", methods={"GET","POST"})
      */
-    public function index(int $id=1 ,Request $request, PublicationRepository $publicationRepository, TypeprojetRepository $typeprojetRepository, RubriqueRepository $rubriqueRepository, PaginatorInterface $paginator): Response
+    public function index(int $id=1, ImagePublicationRepository $imagePublicationRepository ,Request $request, PublicationRepository $publicationRepository, TypeprojetRepository $typeprojetRepository, RubriqueRepository $rubriqueRepository, PaginatorInterface $paginator): Response
     {
         $id = $request->query->get('id');
         $menus = $typeprojetRepository->findAll();
         //$rubriques = $rubriqueRepository->findAll();
-        $rubriques = $rubriqueRepository->findBy([],["nom" => "ASC"]);
+        $rubriques = $rubriqueRepository->findBy([], ["nom" => "ASC"]);
         $titre_rubrique = $rubriqueRepository->findOneBy(['id' => $id]);
         //$publication = $publicationRepository->findBy(['rubrique' => $id]);
         $publication = $paginator->paginate(
@@ -40,6 +41,12 @@ class OffreController extends AbstractController
             $request->query->getInt('page', 1)/*page number*/,
             20/*limit per page*/
         );
+        foreach($publication as $pub){
+            $images = $imagePublicationRepository->findOneBy(['referenceImage' => $pub->getImage()]);
+            if($images != NULL){
+                $pub->setImage($images->getNomServer());
+            }
+        }
         return $this->render('offre/index.html.twig', [
             'controller_name' => 'Publication',
             'publications' => $publication,
@@ -53,10 +60,12 @@ class OffreController extends AbstractController
     /**
      * @Route("/details", name="details", methods={"GET","POST"})
      */
-    public function details(int $id=1 ,Request $request, PropositionRepository $propositionRepository, PublicationRepository $publicationRepository, TypeprojetRepository $typeprojetRepository, RubriqueRepository $rubriqueRepository, PaginatorInterface $paginator): Response
+    public function details(int $id=1, ImagePublicationRepository $imagePublicationRepository ,Request $request, PropositionRepository $propositionRepository, PublicationRepository $publicationRepository, TypeprojetRepository $typeprojetRepository, RubriqueRepository $rubriqueRepository, PaginatorInterface $paginator): Response
     {
         $id = $request->query->get('id');
         $publication = $publicationRepository->findOneBy(['id' => $id]);
+        $reference = $publication->getImage();
+        $images = $imagePublicationRepository->findBy(["referenceImage" => $reference]);
         $menus = $typeprojetRepository->findAll();
         //$rubriques = $rubriqueRepository->findAll();
         $rubriques = $rubriqueRepository->findBy([],["nom" => "ASC"]);
@@ -73,6 +82,7 @@ class OffreController extends AbstractController
             'rubriques' => $rubriques,
             'titre_rubrique' => $titre_rubrique,
             'propositions' => $proposition,
+            'images' => $images,
         ]);
     }
 

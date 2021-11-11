@@ -6,6 +6,7 @@
 parameters:
     logo: '%kernel.project_dir%/public/logo/'
     image: '%kernel.project_dir%/public/image/'
+    image_publication: '%kernel.project_dir%/public/image_publication/'
 
 services:
     # default configuration for services in *this* file
