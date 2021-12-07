@@ -1,0 +1,11 @@
+.dropdown .taille {
+    font-size: 20px;
+}
+
+.navbar ul li {
+    font-size: 24px;
+}
+
+.navbar ul li .dropdown a span {
+    font-size: 24px;
+}

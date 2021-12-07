@@ -1,0 +1,2 @@
+la modification des menus se trouve dans le dossier theme
+dans theme>personnel.css les style personnaliser et modification personnel

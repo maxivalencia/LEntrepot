@@ -11,12 +11,12 @@
 
         <div class="section-title" data-aos="fade-in" data-aos-delay="100">
           <div class="row">
-            <div class="col-12 col-sm-12 col-md-3">
+            {# <div class="col-12 col-sm-12 col-md-3">
               <img src="/dist/images/logo.png" alt="logo l'entrepôt-eco" width="100%">
-            </div>
-            <div class="col-12 col-sm-12 col-md-9">
+            </div> #}
+            <div class="{# col-12 col-sm-12 col-md-9 #}">
               <h2>La Marque et sa philosophie.</h2>
-              <p style="font-size:20px;">{{ texte_accueil.texte|nl2br }}</p>
+              <p style="font-size:16px;">{{ texte_accueil.texte|nl2br }}</p>
             </div>
           </div>
           {# <table>
@@ -87,14 +87,22 @@
       </div>
     </section><!-- End Services Section -->
   </div>
-  <section id="hero" class="hero">
-    <div class="hero-container" data-aos="fade-up">
-      <h1>Welcome to Entrepot-Eco</h1></h1>
-      {# <h2>Construit, rénove et recycle, tous types de bâtiments en structures métalliques.</h2> #}
+  <section {# id="hero" class="hero" #}>
+    {# <div id="Carousel_Menu" style="position:relative; width: 100%;height: 100px; padding-bottom: 10px;">&nbsp;     #}
+    <div id="Carousel_Menu" style="position:relative; width: 100%;height: 500px; padding-bottom: 10px;">&nbsp;    
+      <h1>Welcome to Entrepot-Eco</h1>
       <h2>Agitateur de conscience et facilitateur de projet.</h2>
       <a href="#about" class="btn-get-started scrollto"><i class="bx bx-chevrons-down"></i></a>
+    </div>  
+  </section>
+  {# <section id="hero" class="hero">
+    <div class="hero-container" data-aos="fade-up">
+      <h1>Welcome to Entrepot-Eco</h1> #}
+      {# <h2>Construit, rénove et recycle, tous types de bâtiments en structures métalliques.</h2> #}
+      {# <h2>Agitateur de conscience et facilitateur de projet.</h2>
+      <a href="#about" class="btn-get-started scrollto"><i class="bx bx-chevrons-down"></i></a>
     </div>
-  </section><!-- End Hero -->
+  </section><!-- End Hero --> #}
 
   <main id="main" class="main">
 
@@ -112,64 +120,69 @@
               <a href="#" class="about-btn">A propos de nous <i class="bx bx-chevron-right"></i></a>
             </div>
           </div>
-          <div class="col-xl-7 d-flex align-items-stretch">
+        </div>
+        <div class="row no-gutters">
+          <div class="{# col-xl-7 #} d-flex align-items-stretch">
             <div class="icon-boxes d-flex flex-column justify-content-center">
               <div class="row">
-                <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="100">
+                <div class="col-3 icon-box" data-aos="fade-up" data-aos-delay="100">
                   <i class="bx"><image src="icone/batiment.png" height="100px"></i>
                   <h4>Batiments</h4>
                   <p style="font-size:16px;">Vous voulez construire, en roche lunaire? Aucun soucis, mais juste au niveau timing!
                   En attendant, l’entrepôt, vous propose, tous les matériaux, que l’on peut trouver, sur la planète bleue. Et ça en fait !</p>
                 </div>
-                <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="400">
+                <div class="col-3 icon-box" data-aos="fade-up" data-aos-delay="400">
                   <i class="bx"><image src="icone/ecosysteme.jpg" height="100px"></i>
                   <h4>Ecosystème</h4>
                   <p style="font-size:16px;">C’est notre pied de nez aux écologistes, qui s’imaginent, être les seuls à pouvoir changer et diriger, le monde.  Yes you can !</p>
                 </div>
-                <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="200">
+                <div class="col-3 icon-box" data-aos="fade-up" data-aos-delay="200">
                   <i class="bx"><image src="icone/grosoeuvre.png" height="100px"></i>
                   <h4>Gros Oeuvre</h4>
                   <p style="font-size:16px;">Nous courons tous après quelque chose et vous, un terrassier ou un BTP ?  Laissez faire nos équipes, nos partenaires, ils sont entrainés ! Lâchez l’affaire, vous vous fatiguerez avant eux.</p>
                 </div>
-                <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="300">
+                <div class="col-3 icon-box" data-aos="fade-up" data-aos-delay="300">
                   <i class="bx"><image src="icone/amenagement.png" height="100px"></i>
                   <h4>Amenagements</h4>
                   <p style="font-size:16px;">Savoir faire les bons choix au bon moment, c’est ce que nous vous suggérons dans cette partie, ou mieux, de profiter pleinement, de vos nuits.
                   Le reste ne nous regarde pas !</p>
                 </div>
-                <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="400">
+                <div class="col-3 icon-box" data-aos="fade-up" data-aos-delay="400">
                   <i class="bx"><image src="icone/recyclage.png" height="100px"></i>
                   <h4>Recyclage</h4>
                   <p style="font-size:16px;">On pourrait parler de la pluie et du beau-temps, sauf qu’il n’y en aura bientôt plus. On préfère trouver des solutions pérennes, afin que vous puissiez regarder vos enfants dans les yeux, en leur expliquant que vous avez trouvé comment, consommer, moins.</p>
                 </div>
-                <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="400">
+                <div class="col-3 icon-box" data-aos="fade-up" data-aos-delay="400">
                   <i class="bx"><image src="icone/logistique.png" height="100px"></i>
                   <h4>Logistique</h4>
                   <p style="font-size:16px;">Sans elle, fini, les petits cadeaux coquins, commandés, la veille pour le lendemain. Voici comment sa fonctionne !</p>
                 </div>
-                <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="400">
+                <div class="col-3 icon-box" data-aos="fade-up" data-aos-delay="400">
                   <i class="bx"><image src="icone/foncier.png" height="100px"></i>
                   <h4>Foncier</h4>
                   <p style="font-size:16px;">Le projet est finalisé, mais vous n’avez pas de terrain ! Vous êtes un peu dans la ….  On a peut-être quelque chose pour vous, demandez.</p>
                 </div>
-                <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="400">
+                <div class="col-3 icon-box" data-aos="fade-up" data-aos-delay="400">
                   <i class="bx"><image src="icone/investisseur.jpg" height="100px"></i>
                   <h4>Investisseur Projets en Cours</h4>
                   <p style="font-size:16px;">On ne prend plus les valises d’espèces, mais ça, vous le savez déjà ! Par contre, nous avons de belles propositions à vous faire, dans notre domaine.
                   A vos portables !</p>
                 </div>
-                <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="400">
+                <div class="col-3 icon-box" data-aos="fade-up" data-aos-delay="400">
                   <i class="bx"><image src="icone/achat.png" height="100px"></i>
                   <h4>Location / Achat</h4>
                   <p style="font-size:16px;">Vous avez un projet de location, pour vous rapprocher d’Anjelina et Brad, avant d’acheter, si sympas, comme voisins ?
                   Regardez déjà, ce que nous avons, ou si non, demandez-nous.</p>
                 </div>
-                <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="400">
+                <div class="col-3 icon-box" data-aos="fade-up" data-aos-delay="400">
                   <i class="bx"><image src="icone/location.jpg" height="100px"></i>
                   <h4>J'Achète d'Occasion ou Je Cède Mon Ancient Entrepôt</h4>
                   {# <p style="font-size:16px;">Vous avez un projet de location, pour vous rapprocher d’Anjelina et Brad, avant d’acheter, si sympas, comme voisins ?
                   Regardez déjà, ce que nous avons, ou si non, demandez-nous.</p> #}
                 </div>
+              </div>
+              <div class="row">
+                <img src="/dist/images/logo.png" alt="logo l'entrepôt-eco" width="100px">
               </div>
             </div><!-- End .content-->
           </div>
@@ -291,7 +304,8 @@
 			<br>Nous garantissons le juste prix, la reactivité, des équipes dédiées et un investissement durable sur toute la France.Nous pouvons aussi vous proposer du foncier sur toute la france. </p>
          #}</div>
 
-        <div class="row">           
+        <div class="row">         
+          <div class="swiper-wrapper">          
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
             <div class="icon-box" data-aos="fade-up">
               {# <div class="icon"><i class="bx bxl-dribbble"></i></div> #}
@@ -405,7 +419,7 @@
             </div>
           </div>
         </div>
-
+        </div>
       </div>
     </section><!-- End Services Section -->
     <!-- ======= Portfolio Section ======= -->
