@@ -1,17 +1,26 @@
-<nav id="navbar" class="navbar">
-  <ul>
-    {# <li><a class="nav-link scrollto active" href="#hero">Accueil</a></li> #}
-    <!-- <li><a class="nav-link scrollto" href="#about">A propos de nous</a></li> -->
-    {% for menu in menus %}
-      <li class="dropdown taille"><a href="#"><span style:="font-size:20px;">{{ menu.type }}</span> <i class="bi bi-chevron-down"></i></a>
-        <ul>
-          {% for rubrique in rubriques %}
-            {% if rubrique.typeprojet == menu.type %}                
-              <li><a href="{{ path('offre', {'id': rubrique.id}) }}">{{ rubrique.nom }}</a></li>
-            {% endif %}                 
-          {% endfor %}
-        </ul>
-      </li>
-    {% endfor %}
-  </ul>
+{# <nav id="navbar" class="navbar  navbar-expand-lg"> #}
+<nav id="navbar" class="navbar navbar-expand-lg">
+  <!-- Toggler/collapsibe Button -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span style="fg-color:white;">Menu</span> <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav">
+      {# <li><a class="nav-link scrollto active" href="#hero">Accueil</a></li> #}
+      <!-- <li><a class="nav-link scrollto" href="#about">A propos de nous</a></li> -->
+      {% for menu in menus %}
+        {# <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown"><span style:="font-size:16px;">{{ menu.type }}</span> {# <i class="bi bi-chevron-down"></i> #}{# </a> #}
+        <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown"><span style:="font-size:16px;">{{ menu.type }}</span> {# <i class="bi bi-chevron-down"></i> #}</a>
+          <ul class="dropdown-menu">
+            {% for rubrique in rubriques %}
+              {% if rubrique.typeprojet == menu.type %}                
+                <li class="dropdown-item"><a href="{{ path('offre', {'id': rubrique.id}) }}">{{ rubrique.nom }}</a></li>
+                {# <a class="dropdown-item" href="{{ path('offre', {'id': rubrique.id}) }}">{{ rubrique.nom }}</a> #}
+              {% endif %}                 
+            {% endfor %}
+          </ul>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
 </nav><!-- .navbar -->
