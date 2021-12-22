@@ -20,13 +20,11 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Knp\Component\Pager\PaginatorInterface;
 
-/**
- * @Route("/offre")
- */
+
 class OffreController extends AbstractController
 {
     /**
-     * @Route("/", name="offre", methods={"GET","POST"})
+     * @Route("/offre", name="offre", methods={"GET","POST"})
      */
     public function index(int $id=1, ImagePublicationRepository $imagePublicationRepository ,Request $request, PublicationRepository $publicationRepository, TypeprojetRepository $typeprojetRepository, RubriqueRepository $rubriqueRepository, PaginatorInterface $paginator): Response
     {
@@ -58,7 +56,7 @@ class OffreController extends AbstractController
 
     
     /**
-     * @Route("/details", name="details", methods={"GET","POST"})
+     * @Route("/details_offre", name="details", methods={"GET","POST"})
      */
     public function details(int $id=1, ImagePublicationRepository $imagePublicationRepository ,Request $request, PropositionRepository $propositionRepository, PublicationRepository $publicationRepository, TypeprojetRepository $typeprojetRepository, RubriqueRepository $rubriqueRepository, PaginatorInterface $paginator): Response
     {

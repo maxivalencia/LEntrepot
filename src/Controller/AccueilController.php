@@ -17,6 +17,9 @@ use App\Repository\PartenaireRepository;
 use App\Entity\TexteAccueil;
 use App\Form\TexteAccueilType;
 use App\Repository\TexteAccueilRepository;
+use App\Entity\Promotion;
+use App\Form\PromotionType;
+use App\Repository\PromotionRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -28,12 +31,13 @@ class AccueilController extends AbstractController
     /**
      * @Route("/", name="accueil")
      */
-    public function index(TypeprojetRepository $typeprojetRepository, TexteAccueilRepository $texteAccueilRepository, RubriqueRepository $rubriqueRepository, PartenaireRepository $partenaireRepository): Response
+    public function index(PromotionRepository $promotionRepository, TypeprojetRepository $typeprojetRepository, TexteAccueilRepository $texteAccueilRepository, RubriqueRepository $rubriqueRepository, PartenaireRepository $partenaireRepository): Response
     {
         $menus = $typeprojetRepository->findAll();
         //$rubriques = $rubriqueRepository->findAll();
         $rubriques = $rubriqueRepository->findBy([],["nom" => "ASC"]);
         $partenaires = $partenaireRepository->findBy([],["id" => "DESC"]);
+        $promotions = $promotionRepository->findBy([], ["id" => "DESC"]);
         $i = 0;
         $liste_partenaires = [];
         foreach ($partenaires as $partenaire) {
@@ -50,6 +54,7 @@ class AccueilController extends AbstractController
             //'partenaires' => $liste_partenaires,
             'partenaires' => $partenaires,
             'texte_accueil' => $texteAccueilRepository->findOneBy(['id' => 1]),
+            'promotions' => $promotions,
         ]);
     }
 

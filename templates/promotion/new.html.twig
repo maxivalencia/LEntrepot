@@ -1,0 +1,11 @@
+{% extends 'base4.html.twig' %}
+
+{% block title %}Nouvelle Promotion{% endblock %}
+
+{% block contenue %}
+    <h1>Nouvelle promotion</h1>
+
+    {{ include('promotion/_form.html.twig') }}
+
+    <a href="{{ path('promotion_index') }}">Retour</a>
+{% endblock %}
